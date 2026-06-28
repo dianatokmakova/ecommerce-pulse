@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- Тюнинг ClickHouse для сервера с небольшой памятью (4–8 ГБ).
+     Файл кладётся в /etc/clickhouse-server/config.d/ (см. volume в docker-compose). -->
+<clickhouse>
+    <!-- Не давать ClickHouse съесть всю RAM (оставляем ОС ~30%) -->
+    <max_server_memory_usage_to_ram_ratio>0.7</max_server_memory_usage_to_ram_ratio>
+
+    <!-- Кэш засечек поменьше для low-mem окружений -->
+    <mark_cache_size>268435456</mark_cache_size>   <!-- 256 MB -->
+</clickhouse>

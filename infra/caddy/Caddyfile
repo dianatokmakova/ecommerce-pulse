@@ -1,0 +1,32 @@
+# Caddy: HTTPS-прокси перед ClickHouse (для DataLens) и dashboard-api + защита консолей.
+# Сертификаты Let's Encrypt выпускаются автоматически.
+
+# 1) ClickHouse HTTP наружу только по HTTPS (для BI-инструментов)
+ch.example.com {
+    reverse_proxy clickhouse:8123
+}
+
+# 1b) Dashboard API наружу по HTTPS — фронт на Vercel (https) иначе упрётся в mixed-content.
+#     Сюда смотрит const API в dashboard/index.html.
+api.example.com {
+    reverse_proxy dashboard-api:8000
+}
+
+# 2) Консоль Airflow — закрыта basic-auth
+airflow.example.com {
+    basic_auth {
+        admin <ВСТАВЬ_BCRYPT_ХЭШ>
+    }
+    reverse_proxy airflow-apiserver:8080
+}
+
+# 3) Консоль MinIO — тоже под basic-auth
+minio.example.com {
+    basic_auth {
+        admin <ВСТАВЬ_BCRYPT_ХЭШ>
+    }
+    reverse_proxy minio:9001
+}
+
+# Порт ClickHouse 8123 не публикуется напрямую в файрволе — доступ только через Caddy (443).
+# DataLens требует доступ со своих IP — они добавляются в whitelist на ufw/файрволе.

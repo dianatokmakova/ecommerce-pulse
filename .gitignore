@@ -1,0 +1,28 @@
+# секреты
+.env
+*.env
+!.env.example
+
+# данные
+data/
+*.csv
+*.parquet
+!**/sample_*.csv
+~/.kaggle/
+
+# airflow
+airflow/logs/
+airflow/plugins/__pycache__/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# os
+.DS_Store
+Thumbs.db
+
+#ai
+.claude
