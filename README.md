@@ -2,7 +2,7 @@
 
 > Сквозная аналитическая платформа для e-commerce: исторические данные маркетплейса + живой поток цен с автоматической детекцией аномалий. Docker, оркестрация в Airflow, склад на ClickHouse, дашборды на ECharts и Yandex DataLens.
 
-[🚀 Живой дашборд (Vercel)](mopsvps.online) · [🔗 Дашборд DataLens](#) · [📄 Тех-спека](docs/TECH_SPEC.md) · [🗺 Roadmap](docs/ROADMAP.md)
+[🚀 Живой дашборд (Vercel)](https://mopsvps.online) · [🔗 Дашборд DataLens](#) · [📄 Тех-спека](docs/TECH_SPEC.md) · [🗺 Roadmap](docs/ROADMAP.md)
 
 ---
 
